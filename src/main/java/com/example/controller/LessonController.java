@@ -2,6 +2,7 @@ package com.example.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -21,10 +22,11 @@ public class LessonController {
 		return "Hello World!";
 	}
 
-	// http://localhost:8080/lesson/test にリクエストすると test()が実行される
-	@GetMapping("/test")
+	// http://localhost:8080/lesson/test/1 にアクセスした場合、@PathVariable Integer num の実引数は「1」となる
+	@GetMapping("/test/{num}")
 	@ResponseBody
-	public String test() {
+	// 引数の型は参照型にする
+	public String test(@PathVariable Integer num) {
 		return "This is test!";
 	}
 }
