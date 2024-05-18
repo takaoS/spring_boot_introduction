@@ -22,11 +22,11 @@ public class LessonController {
 		return "Hello World!";
 	}
 
-	// http://localhost:8080/lesson/test/1 にアクセスした場合、@PathVariable Integer num の実引数は「1」となる
+	// http://localhost:8080/lesson/test/1 にアクセスした場合、@PathVariable Integer number の実引数は「1」となる
 	@GetMapping("/test/{num}")
 	@ResponseBody
-	// 引数の型は参照型にする
-	public String test(@PathVariable Integer num) {
+	// 引数名は number としたが name = "num" としたことでパスの値を受け取れる
+	public String test(@PathVariable(name = "num") Integer number) {
 		return "This is test!";
 	}
 }
