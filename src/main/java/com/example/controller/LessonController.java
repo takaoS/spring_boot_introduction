@@ -1,9 +1,9 @@
 package com.example.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/lesson")
@@ -15,8 +15,11 @@ public class LessonController {
 	}
 
 	@GetMapping("/test")
-	@ResponseBody
-	public String test() {
-		return "This is test!";
+	// Model型の仮引数を持つ
+	public String test(Model model) {
+		String text = "This is test!";
+		// msg という属性名で "This is test!" を保持
+		model.addAttribute("msg", text);
+		return "index";
 	}
 }
