@@ -32,4 +32,14 @@ public class LessonController {
 		
 		return "index";
 	}
+	
+	// POSTパラメータ送信用フォーム
+	@GetMapping("/form")
+	public String formTest(Model model) {
+		// フォーム内で DTOクラスを利用するため、SampleFormオブジェクトを用意し、Model を介して渡す
+		SampleForm sf = new SampleForm();
+		model.addAttribute("sf", sf);
+		
+		return "lesson/form_test";
+	}
 }
