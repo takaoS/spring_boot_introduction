@@ -35,11 +35,10 @@ public class LessonController {
 	
 	// POSTパラメータ送信用フォーム
 	@GetMapping("/form")
-	public String formTest(Model model) {
-		// フォーム内で DTOクラスを利用するため、SampleFormオブジェクトを用意し、Model を介して渡す
-		SampleForm sf = new SampleForm();
-		model.addAttribute("sf", sf);
-		
+	// 引数の model を省略しても、Spring MVC が自動的にモデルに DTOクラスのオブジェクトを追加してくれる
+	// その場合、引数にオブジェクトを渡す必要がある
+	public String formTest(SampleForm sf) {
 		return "lesson/form_test";
+		// また、この場合の属性名は、オブジェクトのクラス名がキャメルケースに変換されたもの (sampleForm) になる
 	}
 }

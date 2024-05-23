@@ -8,13 +8,13 @@
 	<!-- th:action="@{パス}" ... 指定したパスに POST通信でリクエストを送信 -->
 	<!-- th:object="${属性名}" ... フォーム全体にバインドされる DTOクラスのオブジェクトを設定。値には Model属性名を指定 -->
 	<!-- th:method="HTTPメソッド名" ... 今回は post を指定 -->
-	<form th:action="@{/lesson/test}" th:object="${sf}" th:method="post">
+	<form th:action="@{/lesson/test}" th:object="${sampleForm}" th:method="post">
 		<div>
 			<label for="name">名前：</label>
 			<!-- th:field="*{フィールド名}" ... <input>タグなどに対し、DTOオブジェクト内のフィールド名を name属性、値を value属性にセット -->
-			<!-- th:field の値には、親要素にセットした DTOクラス (今回は sf) のフィールド名をセットする -->
+			<!-- th:field の値には、親要素にセットした DTOクラス (今回は sampleForm) のフィールド名をセットする -->
 			<input type="text" th:field="*{name}">
-			<!-- フィールド名をセットしない場合、th:value="${sf.name}" などとすることで、単に HTML の value属性に値を設定することもできる -->
+			<!-- フィールド名をセットしない場合、th:value="${sampleForm.name}" などとすることで、単に HTML の value属性に値を設定することもできる -->
 			<!-- つまり、th:field はフォームバインディングのために使用され、th:value はフォームバインディングは行われないが単純に値を表示したい場合に便利 -->
 		</div>
 		<div>
