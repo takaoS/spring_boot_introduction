@@ -1,0 +1,15 @@
+<!--呼び出し元のメソッド名と同じファイル名にするのが通例-->
+
+<!DOCTYPE html>
+<!-- 記載しなくても動作するが、エディタで構文エラーになるため記載しておく -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 th:text="${msg}"></h1>
+	<p>名前：<span th:text="${name}"></span></p>
+	<p>血液型：<span th:text="${bloodType}"></span></p>
+</body>
+</html>
