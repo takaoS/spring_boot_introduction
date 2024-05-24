@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.form.SampleForm;
 
@@ -14,6 +15,20 @@ import com.example.form.SampleForm;
 public class LessonController {
 	@GetMapping("/")
 	public String index() {
+		return "index";
+	}
+	
+	// 後述の test()メソッドと、同じパス名・メソッド名だが、リクエストが GET か POST かで分岐される
+	@GetMapping("/test")
+	// public String メソッド名(@RequestParam(パラメータ名) 型 仮引数名)
+	// パラメータ名と仮引数名が同じ場合、@RequestParam String bloodType のようにパラメータ名の指定を省略できる
+	public String test(Model model, @RequestParam("name") String nm, @RequestParam String bloodType) {
+		String text = "This is test!";
+		model.addAttribute("msg", text);
+
+		model.addAttribute("name", nm);
+		model.addAttribute("bloodType", bloodType);
+
 		return "index";
 	}
 	
