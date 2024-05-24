@@ -1,5 +1,7 @@
 package com.example.form;
 
+import lombok.Data;
+
 // ① DTOクラスの用意
 
 // DTO (Data Transfer Object) クラス...データを転送する目的で作成される Beanクラス
@@ -7,15 +9,11 @@ package com.example.form;
 
 // Beanクラス...フィールドとアクセサメソッドを持つ基本的なクラス全般
 
+@Data
 public class SampleForm {
 	// ルール1. クライアントから送信されるフィールドをすべて定義する
 	private String name;
 	private String bloodType;
 	
 	// ルール2. アクセサメソッドをすべて定義する
-	public void setName(String name) { this.name = name; }
-	public void setBloodType(String bloodType) { this.bloodType = bloodType; }
-	
-	public String getName() { return name; }
-	public String getBloodType() { return bloodType; }
 }
