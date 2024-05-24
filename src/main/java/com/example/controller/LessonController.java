@@ -3,6 +3,7 @@ package com.example.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -35,9 +36,9 @@ public class LessonController {
 	
 	// POSTパラメータ送信用フォーム
 	@GetMapping("/form")
-	// 引数の model を省略しても、Spring MVC が自動的にモデルに DTOクラスのオブジェクトを追加してくれる
-	// その場合、引数にオブジェクトを渡す必要がある
-	public String formTest(SampleForm sf) {
+	// @ModelAttribute を使ってモデルにオブジェクトを自動的に渡すこともできる
+	// こっちの方が明示的で、コードを理解しやすいかも
+	public String formTest(@ModelAttribute SampleForm sf) {
 		return "lesson/form_test";
 		// また、この場合の属性名は、オブジェクトのクラス名がキャメルケースに変換されたもの (sampleForm) になる
 	}
