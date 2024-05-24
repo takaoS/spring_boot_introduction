@@ -22,12 +22,14 @@ public class LessonController {
 	@GetMapping("/test")
 	// public String メソッド名(@RequestParam(パラメータ名) 型 仮引数名)
 	// パラメータ名と仮引数名が同じ場合、@RequestParam String bloodType のようにパラメータ名の指定を省略できる
-	public String test(Model model, @RequestParam("name") String nm, @RequestParam String bloodType) {
+	// required属性を false に指定することで、GETパラメータがなくてもアクセスできる
+	// その場合、引数には null がセットされが、defaultValue属性でデフォルト値を指定することもできる
+	public String test(Model model, @RequestParam(value="name", required=false) String nm, @RequestParam(value="bloodType", required=false, defaultValue="AB") String bt) {
 		String text = "This is test!";
 		model.addAttribute("msg", text);
 
 		model.addAttribute("name", nm);
-		model.addAttribute("bloodType", bloodType);
+		model.addAttribute("bloodType", bt);
 
 		return "index";
 	}
