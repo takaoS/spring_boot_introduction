@@ -6,12 +6,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+// Cookieクラスと HttpServletResponseクラスをインポートします
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
+
 @Controller
 @RequestMapping("cookie")
 public class CookieController {
-	@GetMapping("/set") // cookie の保存は、一般的には POSTメソッドを利用する
+	@GetMapping("/set") // クッキーの保存は、一般的には POSTメソッドを利用する
 	@ResponseBody
-	public String setCookie(@RequestParam String val) {
+	// http://localhost:8080/cookie/set?val=test のようにアクセスすると、
+	public String setCookie(@RequestParam String val, HttpServletResponse res) {
+		// Cookieクラスでクッキーを生成し (test_cookie という名前のクッキーに test という値を入れ) 、
+		// HttpServletResponseクラスの addCookieメソッドでブラウザにクッキーの保存を命令
+		res.addCookie(new Cookie("test_cookie", val));
 		return "保存しました";
 	}
 }
