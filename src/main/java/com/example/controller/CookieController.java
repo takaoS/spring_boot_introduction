@@ -29,4 +29,13 @@ public class CookieController {
 	public String getCookie(@CookieValue("test_cookie") Cookie cookie) {
 		return "cookie の値：" + cookie.getValue();
 	}
+	
+	@GetMapping("/delete") // クッキーの削除は、一般的には POSTメソッドを利用する
+	@ResponseBody
+	public String deletCookie(@CookieValue("test_cookie") Cookie cookie, HttpServletResponse res) {
+		// クッキーの有効期限が切れたこと (残存秒数を0秒) をブラウザに通知 (= クッキーの削除)
+		cookie.setMaxAge(0);
+		res.addCookie(cookie);
+		return "削除しました";
+	}
 }
