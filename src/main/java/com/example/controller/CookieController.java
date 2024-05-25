@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,5 +22,11 @@ public class CookieController {
 		// HttpServletResponseクラスの addCookieメソッドでブラウザにクッキーの保存を命令
 		res.addCookie(new Cookie("test_cookie", val));
 		return "保存しました";
+	}
+	
+	@GetMapping("/get")
+	@ResponseBody
+	public String getCookie(@CookieValue("test_cookie") Cookie cookie) {
+		return "cookie の値：" + cookie.getValue();
 	}
 }
