@@ -43,4 +43,12 @@ public class SessionController {
 		
 		return "名前：" + name + "<br>血液型：" + bloodType;
 	}
+	
+	@GetMapping("/delete") // セッションの削除は、一般的には POSTメソッドを利用する
+	@ResponseBody
+	public String delete() {
+		this.session.removeAttribute("name");
+		this.session.removeAttribute("bloodType");
+		return "削除しました";
+	}
 }
