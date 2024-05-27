@@ -2,7 +2,10 @@ package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -17,5 +20,13 @@ public class SessionController {
 	@Autowired
 	public SessionController(HttpSession session) {
 		this.session = session; // コンストラクタでフィールドに代入
+	}
+	
+	@GetMapping("/set") // セッションの保存は、一般的には POSTメソッドを利用する
+	@ResponseBody
+	public String set(@RequestParam("name") String nm, @RequestParam("bloodType") String bt) {
+		this.session.setAttribute("name", nm);
+		this.session.setAttribute("bloodType", bt);
+		return "保存しました";
 	}
 }
