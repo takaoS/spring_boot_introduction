@@ -29,4 +29,18 @@ public class SessionController {
 		this.session.setAttribute("bloodType", bt);
 		return "保存しました";
 	}
+	
+	@GetMapping("/get")
+	@ResponseBody
+	public String get() {
+		// 返り値は Object型なので、保存されているデータに応じてキャストが必要
+		// セッション名に紐づいたデータがない場合は null を返す
+		String name = (String) this.session.getAttribute("name");
+		if (name == null) name = "名無し";
+		
+		String bloodType = (String) this.session.getAttribute("bloodType");
+		if (bloodType == null) bloodType = "不明";
+		
+		return "名前：" + name + "<br>血液型：" + bloodType;
+	}
 }
