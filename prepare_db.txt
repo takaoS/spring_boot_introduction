@@ -1,0 +1,20 @@
+CREATE DATABASE springboot_tutorial;
+
+CREATE TABLE employees
+(
+	id serial NOT NULL,
+	name character varying(255),
+	department character varying(255),
+	PRIMARY KEY (id)
+);
+
+INSERT INTO
+	employees (name, department)
+VALUES
+	('山田', '第一営業部'),
+	('林', '開発部'),
+	('佐藤', '第二営業部'),
+	('伊藤', '第一営業部'),
+	('渡辺', '総務部'),
+	('清水', '開発部')
+;
