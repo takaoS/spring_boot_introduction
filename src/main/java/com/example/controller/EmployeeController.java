@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.entity.Employee;
@@ -26,5 +27,14 @@ public class EmployeeController {
 		List<Employee> employees = this.employeeService.findAllEmployee();
 		model.addAttribute("employees", employees);
 		return "employee/list";
+	}
+	
+	@GetMapping("/find/{employeeId}")
+	// "/find?id=123" のようなクエリパラメータではないため、@RequestParam は使わない
+	// "/find/123" のように URLパスの一部であるため、@PathVariable を使う
+	public String showEmployee(@PathVariable Integer employeeId, Model uiModel) {
+		Employee employee = this.employeeService.findEmployee(employeeId);
+		uiModel.addAttribute("employee", employee);
+		return "employee/data";
 	}
 }

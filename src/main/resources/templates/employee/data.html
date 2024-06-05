@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>1件取得</title>
+</head>
+<body>
+	<!-- th:object="${属性名}" は、フォームじゃなくても利用可能 -->
+	<table th:object="${employee}">
+		<tr>
+			<th>ID</th>
+			<td th:text="*{id}"></td>
+		</tr>
+		<tr>
+			<th>従業員名</th>
+			<td th:text="*{name}"></td>
+		</tr>
+		<tr>
+			<th>部署</th>
+			<td th:text="*{department}"></td>
+		</tr>
+	</table>
+</body>
+</html>
