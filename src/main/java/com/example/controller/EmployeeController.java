@@ -53,4 +53,15 @@ public class EmployeeController {
 		// リロードされると同じ POSTリクエストが再送信され、データが重複挿入されるため、リダイレクトで新たに GETリクエストを発生させる
 		return "redirect:/employee/list";
 	}
+	
+	// 例：http://localhost:8080/employee/update/5?name=桐ヶ谷&department=ゲーム開発部
+	@GetMapping("/update/{employeeId}") // データ更新は、一般的には POSTメソッドを利用する
+	public String editEmployee(
+			@PathVariable Integer employeeId, 
+			@RequestParam String name, 
+			@RequestParam String department)
+	{
+		this.employeeService.update(employeeId, name, department);
+		return "redirect:/employee/list";
+	}
 }

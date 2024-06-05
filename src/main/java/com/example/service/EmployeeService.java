@@ -53,4 +53,21 @@ public class EmployeeService {
 		// 挿入したデータを Entityクラスとして返す
 		return this.employeeRepository.save(employee);
 	}
+	
+	// 更新
+	public Employee update(Integer employeeId, String name, String department) {
+		// 更新したいデータを取得
+		Optional<Employee> opt = this.employeeRepository.findById(employeeId);
+		Employee employee = opt.orElse(null);
+		
+		// 更新
+		if (opt.isPresent()) {
+			employee.setName(name);
+			employee.setDepartment(department);
+		}
+		
+		// 新規登録と同じメソッドでデータベースに保存
+		// 主キーである id が設定されている状態で save()メソッドを呼び出しているため、データ更新が行われる
+		return this.employeeRepository.save(employee);
+	}
 }
