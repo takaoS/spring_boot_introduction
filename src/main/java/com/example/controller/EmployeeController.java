@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.entity.Employee;
 import com.example.service.EmployeeService;
@@ -43,5 +44,13 @@ public class EmployeeController {
 		List<Employee> employees = this.employeeService.findByDepartment(department);
 		uiModel.addAttribute("employees", employees);
 		return "employee/list";
+	}
+	
+	@GetMapping("/create") // データ挿入は、一般的には POSTメソッドを利用する
+	public String addEmployee(@RequestParam String name, @RequestParam String department) {
+		this.employeeService.insert(name, department);
+		
+		// リロードされると同じ POSTリクエストが再送信され、データが重複挿入されるため、リダイレクトで新たに GETリクエストを発生させる
+		return "redirect:/employee/list";
 	}
 }

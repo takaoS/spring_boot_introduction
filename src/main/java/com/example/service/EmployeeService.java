@@ -42,4 +42,15 @@ public class EmployeeService {
 	public List<Employee> findByDepartment(String department) {
 		return this.employeeRepository.findByDepartment(department);
 	}
+	
+	// 新規登録
+	public Employee insert(String name, String department) {
+		Employee employee = new Employee();
+		
+		employee.setName(name);
+		employee.setDepartment(department);
+		
+		// 挿入したデータを Entityクラスとして返す
+		return this.employeeRepository.save(employee);
+	}
 }
