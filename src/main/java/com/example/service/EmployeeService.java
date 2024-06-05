@@ -37,4 +37,9 @@ public class EmployeeService {
 		// Optionalオブジェクトに値が存在する場合は Employee型の取得したデータを、存在しない場合は null を返す
 		return opt.orElse(null);
 	}
+	
+	// 部署による絞り込み検索
+	public List<Employee> findByDepartment(String department) {
+		return this.employeeRepository.findByDepartment(department);
+	}
 }

@@ -37,4 +37,11 @@ public class EmployeeController {
 		uiModel.addAttribute("employee", employee);
 		return "employee/data";
 	}
+	
+	@GetMapping("/searchByDepartment/{department}")
+	public String searchEmployee(@PathVariable String department, Model uiModel) {
+		List<Employee> employees = this.employeeService.findByDepartment(department);
+		uiModel.addAttribute("employees", employees);
+		return "employee/list";
+	}
 }
