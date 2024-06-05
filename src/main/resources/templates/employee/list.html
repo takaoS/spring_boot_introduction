@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>全権取得</title>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>従業員名</th>
+				<th>部署</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- th:each="ループ用変数 : ${配列やListなどのコレクション}" -->
+			<tr th:each="employee : ${employees}">
+				<!-- th:text="${ループ用変数.フィールド}" -->
+				<td th:text="${employee.id}"></td>
+				<td th:text="${employee.name}"></td>
+				<td th:text="${employee.department}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

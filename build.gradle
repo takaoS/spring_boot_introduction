@@ -23,8 +23,9 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	// Thymeleaf を使えるように依存関係を追加
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' // Thymeleaf
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // JPA
+    implementation 'org.postgresql:postgresql:42.2.24' // PostgreSQL 用の JDBC
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
