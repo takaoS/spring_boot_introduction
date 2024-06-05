@@ -70,4 +70,10 @@ public class EmployeeService {
 		// 主キーである id が設定されている状態で save()メソッドを呼び出しているため、データ更新が行われる
 		return this.employeeRepository.save(employee);
 	}
+	
+	// 削除
+	public void delete(Integer employeeId) {
+		// 返り値は void
+		this.employeeRepository.deleteById(employeeId);
+	}
 }
